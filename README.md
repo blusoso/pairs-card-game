@@ -21,7 +21,9 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Running the tests
+
 ## Built With
-[Next.Js](https://nextjs.org/) - The React Framework
-[Styled Components](https://styled-components.com/)
+- [Next.Js](https://nextjs.org/) - The React Framework<br/>
+- [Styled Components](https://styled-components.com/)<br/>
 
