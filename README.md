@@ -3,7 +3,7 @@ There are 12 face down cards, the face of the cards has a number from 1 to 6, 2 
 
 Example.
 
-![pairs card game1](https://www.picz.in.th/image/oXhemf)
+![pairs card game1](https://ibb.co/74TfFq5)
 ![pairs card game2](https://www.picz.in.th/image/oXhLPb)
 ![pairs card game3](https://www.picz.in.th/image/oXhy3a)
 ![pairs card game4](https://www.picz.in.th/image/oXhIpz)
