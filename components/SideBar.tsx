@@ -5,6 +5,16 @@ import { device } from '@/static/device';
 import { UserContext } from '@/stores/userContext';
 import axios from 'axios';
 
+interface Props {
+    cards: Card[];
+    globalBestScore: number;
+  }
+
+  interface Card {
+    _id: string;
+    value: number;
+  }
+
 const SideBarWrapper = styled.div`
   width: 100%;
 
@@ -54,7 +64,7 @@ const Button = styled.button`
   }
 `;
 
-const SideBar = ({ cards, globalBestScore }) => {
+const SideBar: React.FC<Props> = ({ cards, globalBestScore }) => {
   const {
     counterContext,
     comparedCardsContext,
@@ -64,7 +74,7 @@ const SideBar = ({ cards, globalBestScore }) => {
   const [counter, setCounter] = counterContext;
   const [comparedCards, setComparedCards] = comparedCardsContext;
   const [completedCards, setCompletedCards] = completedCardsContext;
-  const [myBest, setMyBest] = useState(0);
+  const [myBest, setMyBest] = useState<number>(0);
   const [globalBest, setGlobalBest] = useState(globalBestScore);
 
   useEffect(() => {

@@ -4,6 +4,15 @@ import { CardGameContext } from '@/stores/CardGameContext';
 import { UserContext } from '@/stores/userContext';
 import { useRouter } from 'next/router';
 
+interface Props {
+  cards: Card[];
+}
+
+interface Card {
+  _id: string;
+  value: number;
+}
+
 const Card = styled.div`
   box-sizing: border-box;
   width: 100%;
@@ -35,7 +44,7 @@ const Card = styled.div`
   }
 `;
 
-const CardGame = ({ cards }) => {
+const CardGame: React.FC<Props> = ({ cards }) => {
   const router = useRouter();
   const {
     counterContext,

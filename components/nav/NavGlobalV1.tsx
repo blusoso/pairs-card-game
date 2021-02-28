@@ -54,11 +54,11 @@ const Button = styled.button`
   }
 `;
 
-const NavGlobalV1 = () => {
+const NavGlobalV1: React.FC = () => {
   const router = useRouter();
   const [userInfo, setUserInfo] = useContext(UserContext);
 
-  const handleButtonLink = (path) => {
+  const handleButtonLink = (path: string) => {
     router.push(path);
   };
 

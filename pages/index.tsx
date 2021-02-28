@@ -1,10 +1,20 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import SideBar from '@/components/SideBar';
 import CardGame from '@/components/CardGame';
 import { CardGameProvider } from '@/stores/CardGameContext';
 import axios from 'axios';
 import { device } from '@/static/device';
+
+interface Props {
+  cards: Card[];
+  globalBestScore: number;
+}
+
+interface Card {
+  _id: string;
+  value: number;
+}
 
 const GridContainer = styled.div`
   display: grid;
@@ -30,13 +40,7 @@ const CardGameGrid = styled.div`
   }
 `;
 
-export default function Home({ cards, globalBestScore }) {
-  const [userInfo, setUserInfo] = useState();
-
-  useEffect(() => {
-    setUserInfo(localStorage.getItem('userInfo'));
-  }, []);
-
+const Home: React.FC<Props> = ({ cards, globalBestScore }) => {
   return (
     <>
       <GridContainer>
@@ -49,7 +53,9 @@ export default function Home({ cards, globalBestScore }) {
       </GridContainer>
     </>
   );
-}
+};
+
+export default Home;
 
 export const getServerSideProps = async () => {
   const cards = await axios
