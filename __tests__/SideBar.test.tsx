@@ -43,9 +43,9 @@ describe('<SideBar /> component', () => {
 
   it('should have a new game button', () => {
     // Render twice. Client side and server side
-    expect(wrapper.find('.new-game')).toHaveLength(2);
-    expect(wrapper.find('.new-game').first().text()).toEqual('New Game')
-    expect(wrapper.find('.new-game').first().prop('primary'))
+    expect(wrapper.find('.btn')).toHaveLength(2);
+    expect(wrapper.find('.btn').first().text()).toEqual('New Game')
+    expect(wrapper.find('.btn').first().prop('primary'))
 });
 
   it('on click a new game button function', () => {

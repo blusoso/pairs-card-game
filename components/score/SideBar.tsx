@@ -3,17 +3,23 @@ import styled from 'styled-components';
 import { CardGameContext } from '../../stores/CardGameContext';
 import { device } from '../../static/device';
 import { UserContext } from '../../stores/userContext';
+import Button from '../../components/template/Button';
 import axios from 'axios';
 
 interface Props {
-    cards: Card[];
-    globalBestScore: number;
-  }
+  cards: Card[];
+  globalBestScore: number;
+}
 
-  interface Card {
-    _id: string;
-    value: number;
-  }
+interface Card {
+  _id: string;
+  value: number;
+}
+
+interface StyledProps {
+  score?: boolean;
+  theme: any;
+}
 
 const SideBarWrapper = styled.div`
   width: 100%;
@@ -35,7 +41,7 @@ const ScoreWrapper = styled.div`
 
 const ScoreGroup = styled.div`
   margin-bottom: 1rem;
-  background-color: ${(props) => props.theme.colors.lightBlue};
+  background-color: ${(props: StyledProps) => props.theme.colors.lightBlue};
   padding: 1.3rem 0.3rem;
   border-radius: 8px;
 `;
@@ -44,24 +50,9 @@ const Paragraph = styled.div`
   text-transform: uppercase;
   letter-spacing: 0.3px;
   text-align: center;
-  color: ${(props) => props.score && props.theme.colors.blue};
-  font-size: ${(props) => (props.score ? '20px' : '14px')};
-  font-weight: ${(props) => props.score && '600'};
-`;
-
-const Button = styled.button`
-  color: ${(props) => (props.primary ? '#fff' : props.theme.colors.blue)};
-  background-color: ${(props) =>
-    props.primary ? props.theme.colors.blue : props.theme.colors.lightBlue};
-  width: 100%;
-  padding: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  font-size: 600;
-  &:hover {
-    background-color: ${(props) =>
-      props.primary ? 'rgba(0, 87, 255, 0.9)' : 'rgba(0, 87, 255, 0.2)'};
-  }
+  color: ${(props: StyledProps) => props.score && props.theme.colors.blue};
+  font-size: ${(props: StyledProps) => (props.score ? '20px' : '14px')};
+  font-weight: ${(props: StyledProps) => props.score && '600'};
 `;
 
 const SideBar: React.FC<Props> = ({ cards, globalBestScore }) => {
@@ -88,7 +79,6 @@ const SideBar: React.FC<Props> = ({ cards, globalBestScore }) => {
   useEffect(() => {
     if (completedCards.length == cards.length) {
       storeMyBestScore(counter);
-
 
       if (globalBest == 0) {
         setGlobalBest(counter);
@@ -137,7 +127,7 @@ const SideBar: React.FC<Props> = ({ cards, globalBestScore }) => {
             <Paragraph score>{globalBest}</Paragraph>
           </ScoreGroup>
         </ScoreWrapper>
-        <Button primary className="new-game" onClick={handleNewGame}>
+        <Button primary uppercase padding={1.2} handleOnclick={handleNewGame}>
           New Game
         </Button>
       </SideBarWrapper>

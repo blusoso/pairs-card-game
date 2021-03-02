@@ -4,11 +4,17 @@ import { device } from '../../static/device';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { UserContext } from '../../stores/userContext';
+import Button from '../../components/template/Button';
+
+interface StyledProps {
+  bgColor?: string;
+  theme: any;
+}
 
 const Navbar = styled.nav`
   height: 60px;
-  background-color: ${(props) => props.bgColor || '#fff'};
-  border-bottom: 1px solid ${(props) => props.theme.colors.gray};
+  background-color: ${(props: StyledProps) => props.bgColor || '#fff'};
+  border-bottom: 1px solid ${(props: StyledProps) => props.theme.colors.gray};
   user-select: none;
 `;
 
@@ -37,23 +43,6 @@ const NavContainer = styled.nav`
   }
 `;
 
-const Button = styled.button`
-  color: ${(props) => (props.primary ? '#fff' : props.theme.colors.blue)};
-  background-color: ${(props) =>
-    props.primary ? props.theme.colors.blue : props.theme.colors.lightBlue};
-  border: none;
-  border-radius: 6px;
-  letter-spacing: 0.54px;
-  font-size: 1em;
-  padding: 0.55em 1.1em;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${(props) =>
-      props.primary ? 'rgba(0, 87, 255, 0.9)' : 'rgba(0, 87, 255, 0.2)'};
-  }
-`;
-
 const NavGlobalV1: React.FC = () => {
   const router = useRouter();
   const [userInfo, setUserInfo] = useContext(UserContext);
@@ -79,16 +68,16 @@ const NavGlobalV1: React.FC = () => {
           </h1>
           {userInfo ? (
             <div className="nav-actions">
-              <Button primary onClick={handleLogout}>
+              <Button primary handleOnclick={handleLogout}>
                 Logout
               </Button>
             </div>
           ) : (
             <div className="nav-actions">
-              <Button onClick={() => handleButtonLink('/register')}>
+              <Button handleOnclick={() => handleButtonLink('/register')}>
                 Register
               </Button>
-              <Button primary onClick={() => handleButtonLink('/login')}>
+              <Button primary handleOnclick={() => handleButtonLink('/login')}>
                 Login
               </Button>
             </div>

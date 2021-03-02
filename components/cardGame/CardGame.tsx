@@ -13,15 +13,21 @@ interface Card {
   value: number;
 }
 
+interface StyledProps {
+  isFlipped: boolean;
+  disabled: boolean;
+  theme: any;
+}
+
 const Card = styled.div`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   border-radius: 5px;
   border: 1px solid
-    ${(props) =>
+    ${(props: StyledProps) =>
       props.isFlipped ? props.theme.colors.yellow : props.theme.colors.blue};
-  background-color: ${(props) =>
+  background-color: ${(props: StyledProps) =>
     props.isFlipped
       ? props.theme.colors.lightYellow
       : props.theme.colors.lightBlue};
@@ -30,9 +36,12 @@ const Card = styled.div`
   justify-content: center;
   transition: 0.6s;
   transform-style: preserve-3d;
-  transform: rotateY(${(props) => (props.isFlipped ? '0deg' : '180deg')});
-  cursor: ${(props) => (props.Disabled ? 'not-allowed' : 'pointer')};
-  pointer-events: ${(props) => props.Disabled && 'none'};
+  transform: rotateY(
+    ${(props: StyledProps) => (props.isFlipped ? '0deg' : '180deg')}
+  );
+  cursor: ${(props: StyledProps) =>
+    props.disabled ? 'not-allowed' : 'pointer'};
+  pointer-events: ${(props: StyledProps) => props.disabled && 'none'};
 
   span {
     font-size: 1.5em;
@@ -71,7 +80,7 @@ const CardGame: React.FC<Props> = ({ cards }) => {
     }
   }, [comparedCards]);
 
-  const handleCard = (cardSelected) => {
+  const handleCard = (cardSelected: Card) => {
     if (userInfo) {
       setCounter(counter + 1);
       setComparedCards([...comparedCards, cardSelected]);
@@ -90,7 +99,7 @@ const CardGame: React.FC<Props> = ({ cards }) => {
           isFlipped={
             comparedCards.includes(card) || completedCards.includes(card)
           }
-          Disabled={comparedCards.length >= 2 || completedCards.includes(card)}
+          disabled={comparedCards.length >= 2 || completedCards.includes(card)}
           onClick={() => handleCard(card)}
         >
           {comparedCards.includes(card) || completedCards.includes(card) ? (

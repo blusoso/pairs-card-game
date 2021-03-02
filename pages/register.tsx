@@ -5,29 +5,28 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { UserContext } from '@/stores/userContext';
+import Button from '../components/template/Button';
 
-const Button = styled.button`
-  color: ${(props) => (props.primary ? '#fff' : props.theme.colors.blue)};
-  background-color: ${(props) =>
-    props.primary ? props.theme.colors.blue : props.theme.colors.lightBlue};
-  padding: 0.8rem 1.2rem;
-  font-size: 600;
-  display: flex;
-  margin-left: auto;
+interface User {
+  name: string;
+  email: string;
+  password: string;
+  password_confirmation: string;
+}
 
-  &:hover {
-    background-color: ${(props) =>
-      props.primary ? 'rgba(0, 87, 255, 0.9)' : 'rgba(0, 87, 255, 0.2)'};
+const ButtonWrapper = styled.div`
+  .btn {
+    display: flex;
+    margin-left: auto;
   }
 `;
-
-const Register = () => {
+const Register: React.FC = () => {
   const router = useRouter();
   const { register, handleSubmit, watch, errors } = useForm();
-  const [errorMessage, setErrorMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState<string>();
   const [userInfo, setUserInfo] = useContext(UserContext);
 
-  const onSubmit = async (user) => {
+  const onSubmit = async (user: User) => {
     await axios
       .post('/api/users/signup', user)
       .then((res) => {
@@ -99,9 +98,9 @@ const Register = () => {
           </div>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-          <Button primary className="btn">
-            Sign Up
-          </Button>
+          <ButtonWrapper>
+            <Button primary>Sign Up</Button>
+          </ButtonWrapper>
         </form>
       </AuthUI>
     </React.Fragment>
