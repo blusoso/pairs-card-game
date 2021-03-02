@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import SideBar from '@/components/SideBar';
-import CardGame from '@/components/CardGame';
-import { CardGameProvider } from '@/stores/CardGameContext';
+import SideBar from '../components/score/SideBar';
+import CardGame from '../components/cardGame/CardGame';
+import { CardGameProvider } from '../stores/CardGameContext';
 import axios from 'axios';
-import { device } from '@/static/device';
+import { device } from '../static/device';
 
 interface Props {
   cards: Card[];

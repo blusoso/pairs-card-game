@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { CardGameContext } from '@/stores/CardGameContext';
-import { device } from '@/static/device';
-import { UserContext } from '@/stores/userContext';
+import { CardGameContext } from '../../stores/CardGameContext';
+import { device } from '../../static/device';
+import { UserContext } from '../../stores/userContext';
 import axios from 'axios';
 
 interface Props {
@@ -87,14 +87,6 @@ const SideBar: React.FC<Props> = ({ cards, globalBestScore }) => {
 
   useEffect(() => {
     if (completedCards.length == cards.length) {
-    //   if (myBest == 0) {
-    //     setMyBest(counter);
-    //   } else {
-    //     if (counter < myBest) {
-    //       setMyBest(counter);
-    //       storeMyBestScore(counter);
-    //     }
-    //   }
       storeMyBestScore(counter);
 
 
@@ -105,8 +97,6 @@ const SideBar: React.FC<Props> = ({ cards, globalBestScore }) => {
           setGlobalBest(counter);
         }
       }
-
-    //   setTimeout(() => clearScore(), 1000);
     }
   }, [completedCards]);
 
@@ -147,7 +137,7 @@ const SideBar: React.FC<Props> = ({ cards, globalBestScore }) => {
             <Paragraph score>{globalBest}</Paragraph>
           </ScoreGroup>
         </ScoreWrapper>
-        <Button primary onClick={handleNewGame}>
+        <Button primary className="new-game" onClick={handleNewGame}>
           New Game
         </Button>
       </SideBarWrapper>

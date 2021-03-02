@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
-import { CardGameContext } from '@/stores/CardGameContext';
-import { UserContext } from '@/stores/userContext';
+import { CardGameContext } from '../../stores/CardGameContext';
+import { UserContext } from '../../stores/userContext';
 import { useRouter } from 'next/router';
 
 interface Props {
@@ -84,6 +84,8 @@ const CardGame: React.FC<Props> = ({ cards }) => {
     <React.Fragment>
       {cards?.map((card) => (
         <Card
+          className="card"
+          type="button"
           key={card._id}
           isFlipped={
             comparedCards.includes(card) || completedCards.includes(card)

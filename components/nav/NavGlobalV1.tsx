@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { device } from '@/static/device';
+import { device } from '../../static/device';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { UserContext } from '@/stores/userContext';
+import { UserContext } from '../../stores/userContext';
 
 const Navbar = styled.nav`
   height: 60px;
