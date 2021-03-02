@@ -43,7 +43,7 @@ const ButtonUI: React.FC<Props> = ({
   children,
 }) => {
   const handleButton = () => {
-    handleOnclick();
+    handleOnclick && handleOnclick();
   };
 
   return (

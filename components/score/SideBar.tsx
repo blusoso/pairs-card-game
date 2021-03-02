@@ -55,6 +55,12 @@ const Paragraph = styled.div`
   font-weight: ${(props: StyledProps) => props.score && '600'};
 `;
 
+const ButtonWrapper = styled.div`
+  button {
+    width: 100%;
+  }
+`;
+
 const SideBar: React.FC<Props> = ({ cards, globalBestScore }) => {
   const {
     counterContext,
@@ -127,9 +133,11 @@ const SideBar: React.FC<Props> = ({ cards, globalBestScore }) => {
             <Paragraph score>{globalBest}</Paragraph>
           </ScoreGroup>
         </ScoreWrapper>
-        <Button primary uppercase padding={1.2} handleOnclick={handleNewGame}>
-          New Game
-        </Button>
+        <ButtonWrapper>
+          <Button primary uppercase padding={1.2} handleOnclick={handleNewGame}>
+            New Game
+          </Button>
+        </ButtonWrapper>
       </SideBarWrapper>
     </>
   );

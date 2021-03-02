@@ -34,6 +34,15 @@ const GlobalStyle = createGlobalStyle`
         border: none;
         border-radius: 0.5rem;
         font-size: 14px;
+
+        &:active {
+            outline: none;
+            border: none;
+        }
+
+        &:focus {
+            outline: 0;
+        }
     }
 
     button {
@@ -43,6 +52,15 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1em;
         padding: 0.55em 1.1em;
         cursor: pointer;
+
+        &:active {
+            outline: none;
+            border: none;
+        }
+
+        &:focus {
+            outline: 0;
+        }
     }
 
     .error-message {
